@@ -1,4 +1,4 @@
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
@@ -12,7 +12,11 @@ const NavBar = () => {
       console.log(user);
     }
   }, [session]);
-  console.log(session);
+  console.log(
+    "ssgggg",
+    session && session.user.name,
+    user && user[0]?.firstName
+  );
   return (
     <div>
       <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
@@ -287,17 +291,20 @@ const NavBar = () => {
                   href="#"
                   data-toggle="modal"
                   data-target="#logoutModal"
+                  onClick={() => signOut()}
                 >
                   {" "}
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   Logout
                 </a>
-              ) : JSON.parse(localStorage.getItem("logedUser")) ? (
+              ) : typeof window !== "undefined" &&
+                JSON.parse(localStorage.getItem("logedUser")) ? (
                 <a
                   class="dropdown-item"
                   href="#"
                   data-toggle="modal"
                   data-target="#logoutModal"
+                  onClick={() => signOut()}
                 >
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   Logout
