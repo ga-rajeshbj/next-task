@@ -9,7 +9,6 @@ const NavBar = () => {
     if (JSON.parse(localStorage.getItem("logedUser"))) {
       let user = JSON.parse(localStorage.getItem("logedUser"));
       setUser(user);
-      console.log(user);
     }
   }, [session]);
   console.log(
