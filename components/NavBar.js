@@ -15,7 +15,8 @@ const NavBar = () => {
   console.log(
     "ssgggg",
     session && session.user.name,
-    user && user[0]?.firstName
+    user && user[0]?.firstName,
+    session
   );
   return (
     <div>
